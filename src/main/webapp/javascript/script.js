@@ -104,3 +104,8 @@ function showToast(content){
 function gotocheckout(){
 	window.location="checkout.jsp";
 }
+function enroll(coursetitle){
+	var f=document.form1;
+f.method="post";
+	window.location="NUser.jsp";
+}

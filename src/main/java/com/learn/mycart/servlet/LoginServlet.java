@@ -53,7 +53,6 @@ public class LoginServlet extends HttpServlet {
 		 System.out.println("Sucessfully Logged in ");
 		 HttpSession session=request.getSession();
 		 if(user==null) {
-			
 				session.setAttribute("loginmessage", "Invalid Username or password  ...!!");
 				response.sendRedirect("Login.jsp");
 				return;
@@ -63,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 			if(user.getUsertype().equals("admin")) {
 			response.sendRedirect("Admin.jsp");
 			}else if(user.getUsertype().equals("normal")) {
-				response.sendRedirect("NUser.jsp");
+				response.sendRedirect("UserMainPage.jsp");
 			}
 		 }
 		 

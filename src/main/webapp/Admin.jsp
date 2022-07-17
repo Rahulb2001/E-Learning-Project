@@ -1,4 +1,5 @@
 <%@page import="com.learn.mycart.helper.Helper"%>
+<%@page import="com.learn.mycart.videos.videoextraction"%>
 <%@page import="com.learn.mycart.helper.FactoryProvider"%>
 <%@page import="java.util.* "%>
 <%@page import="com.learn.mycart.dao.CategoryDoa"%>
@@ -83,7 +84,7 @@ Map<String,Long> m=Helper.getcounts(FactoryProvider.getFactory());
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<div class="card" data-toggle="modal" data-target="#courseModal">
 					<div class="card-body text-center">
 						<div class="container">
@@ -95,7 +96,7 @@ Map<String,Long> m=Helper.getcounts(FactoryProvider.getFactory());
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<div class="card" data-toggle="modal" data-target="#addcatagory">
 					<div class="card-body text-center">
 						<div class="container">
@@ -106,7 +107,19 @@ Map<String,Long> m=Helper.getcounts(FactoryProvider.getFactory());
 						<h1>Add Category</h1>
 					</div>
 				</div>
-			</div>
+			</div>	
+				<div class="col-md-4">
+				<div class="card" data-toggle="modal" data-target="#addvideo">
+					<div class="card-body text-center">
+						<div class="container">
+							<img alt="" src="Images/menu.png" style="max-width: 100px;"
+								class="img-fluid rounded-circle">
+						</div>
+						<h3>Click here to add <br> Videos</h3>
+						<h1>Add Videos</h1>
+					</div>
+				</div>
+			</div>		
 		</div>
 	</div>
 	<!-- Add category model -->
@@ -285,6 +298,57 @@ Map<String,Long> m=Helper.getcounts(FactoryProvider.getFactory());
 		</div>
 	</div>
 	<!-- End Of Category Model -->
+	<!-- Start of video modal -->
+	
+	<!-- Add category model -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="addvideo" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header custom-bg text-black">
+					<h5 class="modal-title" id="exampleModalLabel">Add New
+						Video</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="VideoServlet" method="post">
+						<input type="hidden" name="operation" value="addcategory">
+						<div class="form-group">
+							<textarea rows="3" cols="4" name="vlink"
+								placeholder="Paste the link" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<select name="vcourse" id="" class="form-control">
+							<%
+							videoextraction vd=new videoextraction();
+							ArrayList<ArrayList<String>>arr=vd.extraction();
+							
+							%>
+								<%
+								for (int i=0;i<arr.size();i++) {
+								%>
+								<option value=<%=arr.get(i)%>><%=arr.get(i) %></option>
+								<%
+								}
+								%>
+							</select>
+						</div>
+						<div class="container text-center">
+							<button class="btn btn-outline-success">Add Video</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Video Modal -->
 
 	<%@include file="Components/Common_modles.jsp"%>
 </body>

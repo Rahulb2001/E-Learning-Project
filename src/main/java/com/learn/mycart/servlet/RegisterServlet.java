@@ -24,18 +24,24 @@ public class RegisterServlet extends HttpServlet {
 			String userpswd=request.getParameter("user_pswd");
 			String userphno=request.getParameter("user_phno");
 			String useraddress=request.getParameter("user_address");
-			User user=new User(username, useremail, userpswd, userphno, "default.jpg", useraddress,"normal");
+			User user=new User(username, useremail, userpswd, userphno, "default.jpg", useraddress,"normal","NotyetSelected");
+			
 			Session hibernetsession= FactoryProvider.getFactory().openSession();
 			Transaction tx=hibernetsession.beginTransaction();
 			int useid=(int) hibernetsession.save(user);
 		tx.commit();
 		hibernetsession.close();
 		HttpSession session=request.getSession();
+		session.setAttribute("usernameandemail", user);
 		session.setAttribute("message", "Registration Sucessfull ...!!");
 		response.sendRedirect("registration.jsp");
 		return;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	private void setAttribute(String string, User user) {
+		// TODO Auto-generated method stub
+		
 	}
 }

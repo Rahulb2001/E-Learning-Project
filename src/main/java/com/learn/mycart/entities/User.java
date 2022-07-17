@@ -26,9 +26,11 @@ public class User {
 	private String userAddress;
 	@Column(length = 1500, name = "user_type")
 	 private String usertype;
+	@Column(length = 1500, name = "user_course_opted")
+	 private String courseopted;
 
 	public User(int userId, String userName, String userEmail, String userPassword, String userPhone, String userPic,
-			String userAddress,String usertype) {
+			String userAddress,String usertype,String courseopted) {
 		this.userId = userId;
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -36,10 +38,11 @@ public class User {
 		this.userPhone = userPhone;
 		this.userPic = userPic;
 		this.userAddress = userAddress;
-		this.usertype=usertype;}
+		this.usertype=usertype;
+		this.courseopted=courseopted;}
 
 	public User(String userName, String userEmail, String userPassword, String userPhone, String userPic,
-			String userAddress,String usertype) {
+			String userAddress,String usertype,String courseopted) {
 
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -48,14 +51,22 @@ public class User {
 		this.userPic = userPic;
 		this.userAddress = userAddress;
 		this.usertype=usertype;
+		this.courseopted=courseopted;
 	}
 
 	public User() {
 
 	}
-
 	public int getUserId() {
 		return userId;
+	}
+
+	public String getCourseopted() {
+		return courseopted;
+	}
+
+	public void setCourseopted(String courseopted) {
+		this.courseopted = courseopted;
 	}
 
 	public void setUserId(int userId) {

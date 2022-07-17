@@ -3,7 +3,12 @@
 <%
 User user1 = (User) session.getAttribute("current-user");
 %>
-<nav class="navbar navbar-expand-lg navbar-light custom-bg">
+<style>
+.navbar{
+background-color: bg-primary;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light custom-bg bg-warning">
 	<div class="container">
 		<a class="navbar-brand" href="#">E-Learning Website</a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -11,10 +16,12 @@ User user1 = (User) session.getAttribute("current-user");
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home <span class="sr-only">(current)</span>
 				</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="Blog_index.jsp">Blog <span class="sr-only"></span>
+				</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#" data-toggle="modal" data-target="#cart"><i
-						class="fa fa-shopping-cart" style="font-size:30px"></i><span class="ml-1 cart-items" style="margin-top:-10px","font-size: 20px"></span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="#" data-toggle="modal" data-target="#cart"></a></li>
 				<%
 				if (user1 == null) {
 				%>
